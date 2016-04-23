@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<style>
+		html, body {height: 100%; margin: 5px; padding: 0;}
+		p {font-family: "Verdana", Times, serif; text-align: center}
+	</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Palindrome check</title>
+    <script type="text/javascript">
+        function getPalindromeResult() {
+             /* remove special characters, spaces and make lowercase*/
+            var textToCheck = document.getElementById("txtToCheck").value;
+			var removeChar = textToCheck.replace(/[^A-Z0-9]/ig, "").toLowerCase();
+
+			/* reverse removeChar for comparison*/
+			var checkPalindrome = removeChar.split('').reverse().join('');
+
+			/* Check to see if myString is a Palindrome*/
+			if(removeChar === checkPalindrome){
+			  document.getElementById("divPalindromeResult").innerHTML = "<p><b>" + textToCheck + "</b>" + " is a palindrome</p>";
+			}
+			else{
+			  document.getElementById("divPalindromeResult").innerHTML = "<p><b>" + textToCheck + "</b>" + " is NOT a palindrome</p>";
+			}
+        }
+    </script>
+</head>
+<body>
+    <p>Palindrome check!</p>
+    <p><input type="text" id="txtToCheck" onkeydown="if (event.keyCode == 13) {getPalindromeResult()}"/></p>
+    <p><input type="button" id="btnSearch" value="Check" onclick="getPalindromeResult()"/></p>
+    <p><div id="divPalindromeResult"></div></p>
+</body>
+</html>
